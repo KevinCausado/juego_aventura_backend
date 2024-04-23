@@ -1,14 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const playerSchema = mongoose.Schema({
+const PlayerSchema= mongoose.Schema({
   name: {
-    type: String,
-    required: true,
+    type:String,
+    required:true
   },
-  location: {
-    type: String,
-    default: "Start",
-  },
-});
 
-module.exports = mongoose.model('player',playerSchema);
+  location : {
+    type:String,
+    default:"Start"
+  }
+})
+
+module.exports = mongoose.model('player',PlayerSchema);

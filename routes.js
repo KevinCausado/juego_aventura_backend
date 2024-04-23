@@ -1,8 +1,9 @@
-const GameController = require("./controllers/GameController");
-const express = require("express");
-const router = express.Router();
+ const GameController = require ('./controllers/GameController');
+ const express = require ('express');
+ const router = express.Router();
 
-router.get('/player', GameController.getPlayer);
-router.post('/player',GameController.createPlayer);
+ router.get('/getPlayer',GameController.getPlayer);
+ router.post('/savePlayer',GameController.createPlayer);
 
-module.exports = router;
+
+ module.exports = router;

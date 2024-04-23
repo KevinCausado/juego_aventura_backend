@@ -1,12 +1,11 @@
 require("dotenv").config();
 
+const mongoose = require("mongoose");
+const PORT = process.env.PORT;
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT;
-const mongoose = require("mongoose");
-const routes = require ('./routes');
-
-const bodyParser = require("body-parser");
+// const bodyparser = require("body-parser");
+const router = require ('./routes');
 
 mongoose
   .connect(process.env.MONGO_DB_URL)
@@ -14,13 +13,13 @@ mongoose
     console.log("Conectado a la base de datos");
 
     app.listen(PORT, () => {
-      console.log(`Escuchando en puerto : ${PORT}`);
+      console.log(`Conectado a puerto: ${PORT}`);
     });
   })
   .catch((err) => {
-    console.log(`Error al conectarse : ${err}`);
+    console.log(`Error: ${err.message}`);
   });
 
-
-  app.use(bodyParser.json());
-  app.use('/api',routes);
+//Middleware
+  app.use(express.json());
+  app.use('/api',router);
